@@ -43,11 +43,15 @@ const Logo = styled.h1`
 font-weight: bold;`
 
 const Right = styled.div`
-flex:1;`;
+flex:1;
+display: flex;
+align-items: center;
+justify-content: flex-end`;
 
 const MenuItem = styled.div`
 font-size: 14px;
-cursor: pointer;`
+cursor: pointer;
+margin-left: 25px;`
 
 const Navbar = () => {
   return (
@@ -57,7 +61,7 @@ const Navbar = () => {
             <Language>En</Language>
             <SearchContainer>
                 <Input/>
-                <Search/>
+                <Search style={{color:"grey", fontSize:"16px"}}/>
             </SearchContainer>
         </Left>
         <Center>
