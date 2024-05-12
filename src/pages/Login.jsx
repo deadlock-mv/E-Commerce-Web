@@ -1,58 +1,60 @@
-import styled from "styled-components"
+import styled from "styled-components";
+import { mobile } from "../responsive";
 
 const Container = styled.div`
-    width: 100vw;
-    height: 100vh;
-    background:linear-gradient(
-      rgba(255,255,255,0.5),
-      rgba(255,255,255,0.5)
-      ), 
-      url("https://images.pexels.com/photos/6984650/pexels-photo-6984650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    ),
+    url("https://images.pexels.com/photos/6984650/pexels-photo-6984650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
       center;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 const Wrapper = styled.div`
-    width: 25%;
-    padding: 20px;
-    background-color: white;
-`
+  width: 25%;
+  padding: 20px;
+  background-color: white;
+  ${mobile({ width: "75%" })}
+`;
 const Form = styled.div`
-    display: flex;
-    flex-direction: column;
-`
+  display: flex;
+  flex-direction: column;
+`;
 const Title = styled.h1`
-    font-size: 24px;
-    font-weight: 300;
-`
+  font-size: 24px;
+  font-weight: 300;
+`;
 const Input = styled.input`
-    flex: 1;
-    mean-width: 40%;
-    margin: 10px 0px;
-    padding: 10px;
-`
+  flex: 1;
+  min-width: 40%;
+  margin: 10px 0px;
+  padding: 10px;
+`;
 const Button = styled.button`
-    width: 40%;
-    border: none;
-    margin-bottom: 10px;
-    padding: 15px 20px;
-    background-color: grey;
-    font-color: white;
-    cursor: pointer;
-    transition: 0.4s ease;
+  width: 40%;
+  border: none;
+  margin-bottom: 10px;
+  padding: 15px 20px;
+  background-color: grey;
+  color: white;
+  cursor: pointer;
+  transition: 0.4s ease;
 
-    &:hover{
-      background-color: teal
-    }
-`
+  &:hover {
+    background-color: teal;
+  }
+`;
 const Link = styled.a`
-    margin: 5px 0px;
-    font-size: 12px;
-    text-decoration: underline;
-    cursor: pointer
-`
+  margin: 5px 0px;
+  font-size: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+`;
 
 const Login = () => {
   return (
@@ -68,7 +70,7 @@ const Login = () => {
         </Form>
       </Wrapper>
     </Container>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
