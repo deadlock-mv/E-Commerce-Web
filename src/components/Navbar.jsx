@@ -1,5 +1,10 @@
 import { Badge } from "@material-ui/core";
-import { Height, Search, ShoppingCartOutlined } from "@material-ui/icons";
+import {
+  Height,
+  Search,
+  ShoppingCartOutlined,
+  SupervisorAccountSharp,
+} from "@material-ui/icons";
 import React from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
@@ -94,6 +99,11 @@ const Navbar = () => {
               <Badge badgeContent={4} color="primary">
                 <ShoppingCartOutlined />
               </Badge>
+            </Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to="/admin">
+              <SupervisorAccountSharp /> Admin
             </Link>
           </MenuItem>
         </Right>

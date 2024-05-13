@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import Cart from "./pages/Cart";
 import Announcement from "./components/Announcement";
 import Navbar from "./components/Navbar";
+import Admin from "./pages/Admin";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/user/cart" element={<Cart />} />
+          <Route path="/admin" element={<Admin />} />
           {/* <Home /> */}
           {/* <ProductList/> */}
           {/* <Product/> */}

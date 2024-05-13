@@ -5,5 +5,13 @@
 }
 
 .Link {
-    text-decoration: none !important;
-  }
+  text-decoration: none !important;
+}
+
+.admin-page {
+  display: flex;
+}
+
+.admin-body {
+  flex: 1;
+}
