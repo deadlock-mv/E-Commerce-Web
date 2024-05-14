@@ -7,7 +7,7 @@ import {
   TrendingUpRounded,
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-import { Products, Orders, Analytics } from "../components/Admin";
+import { Products, Orders, Analytics } from "../components/admincomponents";
 
 const Admin = () => {
   const [activeMenuItem, setActiveMenuItem] = useState("Products");
@@ -18,7 +18,7 @@ const Admin = () => {
 
   return (
     <div className="admin-page">
-      <Sidebar style={{ height: "90vh" }}>
+      <Sidebar style={{ height: "89vh" }}>
         <h3
           style={{
             display: "flex",
