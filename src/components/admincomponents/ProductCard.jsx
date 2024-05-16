@@ -5,7 +5,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 
 const ProductCard = ({ product, onDelete, onEdit }) => {
-  const { image, name, price, category } = product;
+  const { img, name, price, category } = product;
 
   return (
     <Card className="productCard">
@@ -20,7 +20,7 @@ const ProductCard = ({ product, onDelete, onEdit }) => {
       <CardContent>
         <Grid container spacing={2}>
           <Grid item xs={6}>
-            <img src={image} alt={name} className="productImage" />
+            <img src={img} alt={name} className="productImage" />
           </Grid>
           <Grid item xs={6}>
             <Typography variant="body2" color="textSecondary" component="p">

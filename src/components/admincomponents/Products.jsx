@@ -8,11 +8,20 @@ import {
   InputLabel,
 } from "@material-ui/core";
 import styled from "styled-components";
-import ProductsList from "./ProductsList";
+import { products } from "../../data";
+import ProductCard from "./ProductCard";
+import DrawerComponent from "./DrawerComponent";
 
 const Products = () => {
   const [searchValue, setSearchValue] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    category: "",
+    price: "",
+    image: null,
+  });
 
   const handleSearchChange = (event) => {
     setSearchValue(event.target.value);
@@ -27,14 +36,34 @@ const Products = () => {
     setSelectedOption("");
   };
 
+  const onDelete = () => {};
+
+  const onEdit = (product) => {
+    setIsDrawerOpen(true); // Open the drawer when the edit button is clicked
+    console.log(product)
+    setFormData({
+      name: product.name,
+      category: product.category,
+      price: product.price,
+      image: product.img,
+    });
+  };
+
+  const handleisDrawerOpen = (state) => {
+    setIsDrawerOpen(state);
+  };
+
   const Box = styled.div`
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     overflow-y: auto;
+    flex-wrap: wrap;
     height: 60vh;
     width: 80%;
     border: 2px solid #fd9b9b37;
     border-radius: 4px;
+    background-color: #754d4d63;
+    padding: inherit;
   `;
 
   return (
@@ -73,14 +102,33 @@ const Products = () => {
         >
           Reset
         </Button>
+        <Button
+          onClick={() => handleisDrawerOpen(true)}
+          variant="contained"
+          color="primary"
+          // startIcon={<AddIcCallRounded />}
+        >
+          Add Item
+        </Button>
       </div>
 
       <Box>
-        Products Cards
-        <ProductsList 
-          products={[{img: "", name: "p1", category: "c1", price:"$299"}]}
-        />
+        {products.map((product, index) => (
+          <ProductCard
+            key={index}
+            product={product}
+            onDelete={onDelete}
+            onEdit={onEdit}
+          />
+        ))}
       </Box>
+
+      <DrawerComponent
+        isDrawerOpen={isDrawerOpen}
+        setIsDrawerOpen={setIsDrawerOpen}
+        handleisDrawerOpen={handleisDrawerOpen}
+        product={formData}
+      />
     </div>
   );
 };
