@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Drawer,
@@ -14,13 +14,22 @@ const DrawerComponent = ({
   product = {},
 }) => {
   const [formData, setFormData] = useState({
-    name: product && product.name ? product.name : "",
-    category: product && product.category ? product.category : "",
-    price: product && product.price ? product.price : undefined,
-    image: product && product.img ? product.img : null,
+    name: "",
+    category: "",
+    price: undefined,
+    image: null,
   });
 
-  console.log("drawer", product);
+  useEffect(() => {
+    setFormData({
+      name: product.name || "",
+      category: product.category || "",
+      price: product.price || undefined,
+      image: product.image || null,
+    });
+  },[product]);
+
+  console.log("drawer", product, formData);
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({
@@ -118,7 +127,7 @@ const DrawerComponent = ({
           {formData?.image ? (
             <div style={{ width: "20vh", height: "15vh", marginTop: "15px" }}>
               <img
-                src={URL.createObjectURL(formData.image)}
+                src={product? formData.image : URL.createObjectURL(formData.image)}
                 className="productImage"
               />
             </div>
