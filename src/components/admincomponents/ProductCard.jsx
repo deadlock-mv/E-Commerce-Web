@@ -10,10 +10,14 @@ const ProductCard = ({ product, onDelete, onEdit }) => {
   return (
     <Card className="productCard">
       <CardHeader
-        action={
-          <Button aria-label="edit" onClick={() => onEdit(product)}>
+        action={<div >
+          <Button style={{marginRight: "5px"}} aria-label="edit" color='primary' variant='contained' onClick={() => onEdit(product)}>
             <EditIcon />
           </Button>
+          <Button style={{marginRight: "5px"}} aria-label="delete" variant="contained" color='secondary' onClick={() => onDelete(product)}>
+          <DeleteIcon />
+        </Button>
+        </div>
         }
         title={name}
       />
@@ -33,9 +37,7 @@ const ProductCard = ({ product, onDelete, onEdit }) => {
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
-        <Button aria-label="delete" onClick={() => onDelete(product)}>
-          <DeleteIcon />
-        </Button>
+        
       </CardActions>
     </Card>
   );

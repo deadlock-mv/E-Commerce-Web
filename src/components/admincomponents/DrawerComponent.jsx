@@ -22,10 +22,10 @@ const DrawerComponent = ({
 
   useEffect(() => {
     setFormData({
-      name: product.name || "",
-      category: product.category || "",
-      price: product.price || undefined,
-      image: product.image || null,
+      name: product?.name || "",
+      category: product?.category || "",
+      price: product?.price || undefined,
+      image: product?.image || null,
     });
   },[product]);
 
@@ -83,7 +83,7 @@ const DrawerComponent = ({
             justifyContent: "center",
           }}
         >
-          Add New Item
+          {product?.name?.length > 0 ? "Edit Item" : "Add New Item"}
         </h2>
         <form onSubmit={handleSubmit}>
           <TextField

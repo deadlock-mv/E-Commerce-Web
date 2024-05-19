@@ -11,11 +11,14 @@ import styled from "styled-components";
 import { products } from "../../data";
 import ProductCard from "./ProductCard";
 import DrawerComponent from "./DrawerComponent";
+import DeleteModal from "./DeleteModal";
 
 const Products = () => {
   const [searchValue, setSearchValue] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
     category: "",
@@ -36,11 +39,25 @@ const Products = () => {
     setSelectedOption("");
   };
 
-  const onDelete = () => {};
+  const handleOpenModal = (product) => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedProduct(null);
+    setIsModalOpen(false);
+  };
+
+  const handleDelete = () => {
+    // Perform the delete action here
+    console.log("Deleting product:", selectedProduct);
+    handleCloseModal();
+  };
 
   const onEdit = (product) => {
     setIsDrawerOpen(true); // Open the drawer when the edit button is clicked
-    console.log(product)
+    console.log(product);
     setFormData({
       name: product.name,
       category: product.category,
@@ -117,7 +134,7 @@ const Products = () => {
           <ProductCard
             key={index}
             product={product}
-            onDelete={onDelete}
+            onDelete={handleOpenModal}
             onEdit={onEdit}
           />
         ))}
@@ -128,6 +145,13 @@ const Products = () => {
         setIsDrawerOpen={setIsDrawerOpen}
         handleisDrawerOpen={handleisDrawerOpen}
         product={formData}
+      />
+
+      <DeleteModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        onConfirm={handleDelete}
+        product={selectedProduct}
       />
     </div>
   );
