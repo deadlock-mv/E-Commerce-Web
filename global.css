@@ -95,3 +95,14 @@
   width: 30vh;
   padding: 10px;
 }
+
+.orders-collapse {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.orders-collapse > div {
+  flex: 1 1 50%; /* Each child takes up 50% of the width */
+  box-sizing: border-box;
+  padding: 8px; /* Optional: adds some padding */
+}

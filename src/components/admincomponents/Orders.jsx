@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { TextField, Button, Select, MenuItem, InputLabel, FormControl } from '@material-ui/core';
 import styled from "styled-components";
+import OrdersTable from './OrdersTable';
 
 
 const Orders = () => {
@@ -70,9 +71,9 @@ const Orders = () => {
         </Button>
         </div>
 
-        <Box>
-
-        </Box>
+        {/* <Box> */}
+          <OrdersTable />
+        {/* </Box> */}
     </div>
   )
 }
