@@ -31,7 +31,7 @@ const ProductCard = ({ product, onDelete, onEdit }) => {
               <strong>Price:</strong> ${price}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-              <strong>Category:</strong> {category}
+              <strong>Category:</strong> {category.join(", ")}
             </Typography>
           </Grid>
         </Grid>

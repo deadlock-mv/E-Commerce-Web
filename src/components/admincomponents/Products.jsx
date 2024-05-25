@@ -6,6 +6,8 @@ import {
   MenuItem,
   FormControl,
   InputLabel,
+  Checkbox,
+  ListItemText,
 } from "@material-ui/core";
 import styled from "styled-components";
 import { products } from "../../data";
@@ -14,14 +16,15 @@ import DrawerComponent from "./DrawerComponent";
 import DeleteModal from "./DeleteModal";
 
 const Products = () => {
+  const categories = ["shirt", "Jacket", "cap", "bag"]; // Example categories
   const [searchValue, setSearchValue] = useState("");
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState([]);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
-    category: "",
+    category: [],
     price: "",
     image: null,
   });
@@ -36,7 +39,7 @@ const Products = () => {
 
   const handleReset = () => {
     setSearchValue("");
-    setSelectedOption("");
+    setSelectedOption([]);
   };
 
   const handleOpenModal = (product) => {
@@ -99,16 +102,18 @@ const Products = () => {
           <Select
             style={{ width: "20vh" }}
             labelId="select-label"
+            multiple
             value={selectedOption}
             onChange={handleSelectChange}
+            renderValue={(selected) => selected.join(", ")}
             label="Select"
           >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value="option1">Option 1</MenuItem>
-            <MenuItem value="option2">Option 2</MenuItem>
-            <MenuItem value="option3">Option 3</MenuItem>
+            {categories.map((category) => (
+              <MenuItem key={category} value={category}>
+                <Checkbox checked={selectedOption.indexOf(category) > -1} />
+                <ListItemText primary={category} />
+              </MenuItem>
+            ))}
           </Select>
         </FormControl>
         <Button

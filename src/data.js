@@ -78,31 +78,31 @@ export const sliderItems = [
  export const products = [{
     img:"https://d3o2e4jr3mxnm3.cloudfront.net/Mens-Jake-Guitar-Vintage-Crusher-Tee_68382_1_lg.png",
     name: "Puma shirt",
-    category: "shirt",
+    category: ["shirt"],
     price: 99
   },
   {
     img:"https://www.pngarts.com/files/3/Women-Jacket-PNG-High-Quality-Image.png",
     name: "Woolen-Jacket",
-    category: "Jacket",
+    category: ["Jacket", "shirt"],
     price: 199
   },
   {
     img:"https://cdn.shopify.com/s/files/1/0101/4832/products/Angela_Natural_Tee.png?v=1606780388",
     name: "Natural T-shirt",
-    category: "shirt",
+    category: ["shirt"],
     price: 99
   },
   {
     img:"https://d3o2e4jr3mxnm3.cloudfront.net/Rocket-Vintage-Chill-Cap_66374_1_lg.png",
     name: "Vintage Cap",
-    category: "cap",
+    category: ["cap"],
     price: 49
   },
   {
     img:"https://images.ctfassets.net/5gvckmvm9289/3BlDoZxSSjqAvv1jBJP7TH/65f9a95484117730ace42abf64e89572/Noissue-x-Creatsy-Tote-Bag-Mockup-Bundle-_4_-2.png",
     name: "Duffle bag",
-    category: "bag",
+    category: ["bag"],
     price: 159
   },
 ]

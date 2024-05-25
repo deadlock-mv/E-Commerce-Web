@@ -5,6 +5,10 @@ import {
   TextField,
   FormControl,
   InputLabel,
+  Select,
+  MenuItem,
+  Checkbox,
+  ListItemText,
 } from "@material-ui/core";
 
 const DrawerComponent = ({
@@ -13,9 +17,10 @@ const DrawerComponent = ({
   handleisDrawerOpen,
   product = {},
 }) => {
+  const categories = ["shirt", "Jacket", "cap", "bag"]; // Example categories
   const [formData, setFormData] = useState({
     name: "",
-    category: "",
+    category: [],
     price: undefined,
     image: null,
   });
@@ -23,11 +28,11 @@ const DrawerComponent = ({
   useEffect(() => {
     setFormData({
       name: product?.name || "",
-      category: product?.category || "",
+      category: product?.category || [],
       price: product?.price || undefined,
       image: product?.image || null,
     });
-  },[product]);
+  }, [product]);
 
   console.log("drawer", product, formData);
   const handleChange = (event) => {
@@ -36,6 +41,13 @@ const DrawerComponent = ({
       ...formData,
       [name]: value,
     });
+  };
+
+  const handleCategoryChange = (event) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      category: event.target.value,
+    }));
   };
 
   const handleImageChange = (event) => {
@@ -54,7 +66,7 @@ const DrawerComponent = ({
     // Reset form data
     setFormData({
       name: "",
-      category: "",
+      category: [],
       price: "",
       image: null,
     });
@@ -64,7 +76,7 @@ const DrawerComponent = ({
     // Reset form data when drawer is closed
     setFormData({
       name: "",
-      category: "",
+      category: [],
       price: "",
       image: null,
     });
@@ -95,15 +107,26 @@ const DrawerComponent = ({
             fullWidth
             margin="normal"
           />
-          <TextField
-            name="category"
-            label="Category"
-            value={formData.category}
-            onChange={handleChange}
-            required
-            fullWidth
-            margin="normal"
-          />
+          <FormControl fullWidth margin="normal">
+            <InputLabel id="category-label">Category</InputLabel>
+            <Select
+              labelId="category-label"
+              name="category"
+              multiple
+              value={formData.category}
+              onChange={handleCategoryChange}
+              renderValue={(selected) => selected.join(", ")}
+            >
+              {categories.map((category) => (
+                <MenuItem key={category} value={category}>
+                  <Checkbox
+                    checked={formData.category.indexOf(category) > -1}
+                  />
+                  <ListItemText primary={category} />
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
           <TextField
             name="price"
             label="Price"
@@ -127,7 +150,9 @@ const DrawerComponent = ({
           {formData?.image ? (
             <div style={{ width: "20vh", height: "15vh", marginTop: "15px" }}>
               <img
-                src={product? formData.image : URL.createObjectURL(formData.image)}
+                src={
+                  product ? formData.image : URL.createObjectURL(formData.image)
+                }
                 className="productImage"
               />
             </div>
